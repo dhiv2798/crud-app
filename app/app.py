@@ -79,5 +79,16 @@ def update(id):
     return redirect("/")
 
 
+@app.route("/batch_update/<int:id>")
+def batch_update(id):
+    conn=get_db()
+    cur=conn.cursor()
+    cur.execute("DELETE FROM tasks WHERE id=%s", (id,))
+    cur.execute("INSERT INTO tasks (title) VALUES (%s)", ("Batch Updated Task",))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return redirect("/")
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5100)
