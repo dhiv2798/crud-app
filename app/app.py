@@ -68,6 +68,16 @@ def delete(id):
     conn.close()
     return redirect("/")
 
+@app.route("/update/<int:id>")
+def update(id):
+    conn=get_db()
+    cur=conn.cursor()
+    cur.execute("DELETE FROM tasks WHERE id=%s", (id,))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return redirect("/")
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5100)
