@@ -62,7 +62,7 @@ def add():
 def delete(id):
     conn=get_db()
     cur=conn.cursor()
-    cur.execute("DELETE FROM tasks WHERE id=%s", (id,))
+    cur.execute("DELETE FROM tasks WHERE id=%s and name='dhivyaa'", (id,))
     conn.commit()
     cur.close()
     conn.close()
@@ -72,7 +72,7 @@ def delete(id):
 def update(id):
     conn=get_db()
     cur=conn.cursor()
-    cur.execute("DELETE FROM tasks WHERE id=%s and name = 'dhee'", (id,))
+    cur.execute("DELETE FROM tasks WHERE id=%s and name in('dhee', 'dhivyaa')", (id,))
     conn.commit()
     cur.close()
     conn.close()
