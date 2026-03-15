@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Task Manager</title>
+</head>
+<body>
+
+<h2>Daily Task Manager</h2>
+
+<form method="POST" action="/add">
+    <input type="text" name="title" placeholder="Enter task" required>
+    <button type="submit">Add Task</button>
+</form>
+
+<hr>
+
+<ul>
+    {% for task in tasks %}
+        <li>
+            {{ task[1] }}
+            <a href="/delete/{{ task[0] }}">❌</a>
+        </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
